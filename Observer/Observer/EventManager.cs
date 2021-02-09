@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace patern3
+namespace Observer
 {
     class EventManager
     {
@@ -24,7 +24,7 @@ namespace patern3
         }
         public void notify(Job job, string eventName)
         {
-            foreach(IListener list in eventManagers)
+            foreach (IListener list in eventManagers)
             {
                 list.Update(job, eventName);
             }

@@ -4,27 +4,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace patern3
+namespace Observer
 {
-   class Service
+    class Service
     {
         public List<Job> jobs;
-        public EventManager eventManager;      
+        public EventManager eventManager;
 
         public Service()
         {
             this.jobs = new List<Job>();
-            this.eventManager = new EventManager();         
+            this.eventManager = new EventManager();
         }
         public void NewJob(Job job)
         {
             this.jobs.Add(job);
-            eventManager.notify(job,"add");
+            eventManager.notify(job, "new");
         }
         public void RemoveJob(Job job)
         {
             this.jobs.Remove(job);
-            eventManager.notify(job,"remove");
+            eventManager.notify(job, "remove");
         }
     }
 }

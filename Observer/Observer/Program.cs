@@ -4,23 +4,20 @@ using System.Globalization;
 using System.Net.Http.Headers;
 using System.Threading;
 
-namespace patern3
+namespace Observer
 {
     class Program
     {
         static void Main(string[] args)
         {
-            int id;
-            string u_vacancy;
-            string u_companyName;
-            string u_info;
-            string u_emploer;
+            int id;            
             string choice = "";
 
+            Val val = new Val();
             Service service = new Service();
             List<Listener> listerners = new List<Listener>();
 
-            while(choice != "0")
+            while (choice != "0")
             {
                 Console.WriteLine("Enter your choice: \n" +
                     "1.New user:\n" +
@@ -33,33 +30,66 @@ namespace patern3
                     case "1": listerners.Add(new Listener()); break;
 
                     case "2":
-                        Console.WriteLine("Vacancy: ");
-                        u_vacancy = Console.ReadLine();
+                        do
+                        {
+                            Console.Write("Vacancy: ");
+                            val.Vacancy = Console.ReadLine();
 
-                        Console.WriteLine("Company name: ");
-                        u_companyName = Console.ReadLine();
+                        } while (val.Vacancy == "");
 
-                        Console.WriteLine("Info: ");
-                        u_info = Console.ReadLine();
+                        do
+                        {
+                            Console.Write("Company name: ");
+                            val.CompanyName = Console.ReadLine();
 
-                        Console.WriteLine("Emploer: ");
-                        u_emploer = Console.ReadLine();
-                        service.NewJob(new Job(u_vacancy, u_companyName, u_info, u_emploer));
+                        } while (val.CompanyName == "");
+
+                        do
+                        {
+                            Console.Write("Info: ");
+                            val.Info = Console.ReadLine();
+
+                        } while (val.Info == "");
+
+                        do
+                        {
+                            Console.Write("Emploer: ");
+                            val.Emploer = Console.ReadLine();
+
+                        } while (val.Emploer == "");
+
+                        service.NewJob(new Job(val.Vacancy, val.CompanyName, val.Info, val.Emploer));
                         break;
 
                     case "3":
-                        Console.WriteLine("Vacancy: ");
-                        u_vacancy = Console.ReadLine();
+                        do
+                        {
+                            Console.Write("Vacancy: ");
+                            val.Vacancy = Console.ReadLine();
 
-                        Console.WriteLine("Company name: ");
-                        u_companyName = Console.ReadLine();
+                        } while (val.Vacancy == "");
 
-                        Console.WriteLine("Info: ");
-                        u_info = Console.ReadLine();
+                        do
+                        {
+                            Console.Write("Company name: ");
+                            val.CompanyName = Console.ReadLine();
 
-                        Console.WriteLine("Emploer: ");
-                        u_emploer = Console.ReadLine();
-                        service.RemoveJob(new Job(u_vacancy, u_companyName, u_info, u_emploer));
+                        } while (val.CompanyName == "");
+
+                        do
+                        {
+                            Console.Write("Info: ");
+                            val.Info = Console.ReadLine();
+
+                        } while (val.Info == "");
+
+                        do
+                        {
+                            Console.Write("Emploer: ");
+                            val.Emploer = Console.ReadLine();
+
+                        } while (val.Emploer == ""); ;
+                        service.RemoveJob(new Job(val.Vacancy, val.CompanyName, val.Info, val.Emploer));
                         break;
 
                     case "4":

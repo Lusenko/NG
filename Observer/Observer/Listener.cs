@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace patern3
+namespace Observer
 {
     class Listener : IListener
     {
